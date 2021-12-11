@@ -40,5 +40,4 @@ apps:
      - org.videolan.vlc
 
   url:
-     - com.retroarch: ""
      - com.zunjae.anyme: "https://anyme.app/apk"
