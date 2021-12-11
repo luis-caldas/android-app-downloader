@@ -2,7 +2,10 @@
 
 import os
 import sys
+import requests
 import subprocess
+
+from yaml import load, Loader
 
 
 ###########
@@ -17,7 +20,6 @@ OUTPUT_FOLDER = "./output"
 def parse_config(file_name):
 
     # Parses YAML file
-    from yaml import load, Loader
     with open(file_name, "r") as file:
         return load(file.read(), Loader)
 
@@ -40,12 +42,20 @@ def main():
     gplay_command = ["gplaycli", "-d", *config_full["apps"]["google-play"], "-y", "-f", out_folder, "-c", config_file]
     subprocess.run(gplay_command, stdout=sys.stdout, stderr=sys.stderr, universal_newlines=True)
 
-    # TODO Download apps from F-Droid
-    pass
+    # Download apps from F-Droid
+    for each_app in config_full["apps"]["fdroid"]:
+        version_url = "https://gitlab.com/fdroid/fdroiddata/-/raw/master/metadata/" + each_app + ".yml"
+        page = requests.get(version_url)
+        page_data = load(page.text, Loader)
+        version_app = page_data["CurrentVersionCode"]
+        app_url = "https://f-droid.org/repo/" + each_app + "_" + str(version_app) + ".apk"
+        apk_file = requests.get(app_url)
+        print("Downloading", each_app)
+        open(os.path.join(out_folder, each_app + ".apk"), 'wb').write(apk_file.content)
+        print("Downloaded", each_app)
 
     # TODO Download apps from URLs
 
 
 if __name__ == '__main__':
     main()
-

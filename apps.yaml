@@ -7,29 +7,30 @@ apps:
      - com.discord
      - com.kiwibrowser.browser
      - com.revolut.revolut
+     - com.sagetech.mirror
      - com.spotify.music
+     - com.teslacoilsw.launcher
+     - com.trello
      - com.whatsapp
      - com.whicons.iconpack
      - ie.leapcard.tnfc
      - ie.three.my3
+     - org.citra.citra_emu
 
   fdroid:
      - app.organicmaps
      - at.tomtasche.reader
+     - com.aurora.store
      - com.forrestguice.suntimeswidget
+     - com.fsck.k9
      - com.gianlu.aria2app
      - com.gitlab.mahc9kez.shadowsocks.foss
      - com.gsnathan.pdfviewer
      - com.ichi2.anki
-     - com.retroarch
-     - com.sagetech.mirror
      - com.termux
-     - com.teslacoilsw.launcher
      - com.thirtydegreesray.openhub
-     - com.trello
      - com.tunerly
      - de.markusfisch.android.binaryeye
-     - org.citra.citra_emu
      - org.dolphinemu.dolphinemu
      - org.floens.chan
      - org.krita
@@ -39,6 +40,5 @@ apps:
      - org.videolan.vlc
 
   url:
-     - com.aurora.store
-     - com.fsck.k9
-     - com.zunjae.anyme
+     - com.retroarch: ""
+     - com.zunjae.anyme: "https://anyme.app/apk"
