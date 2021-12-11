@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
 import os
+import requests
+
+from yaml import load, Loader
 
 
 ###########
@@ -14,7 +17,6 @@ OUTPUT_FOLDER = "./output"
 def parse_config(file_name):
 
     # Parses YAML file
-    from yaml import load, Loader
     with open(file_name, "r") as file:
         return load(file.read(), Loader)
 
@@ -34,13 +36,20 @@ def main():
 
     # TODO Download apps from GPlay
 
-    # TODO Download apps from F-Droid
+    # Download apps from F-Droid
     for each_app in config_full["apps"]["fdroid"]:
-        print(get_fdroid_url(each_app))
+        version_url = "https://gitlab.com/fdroid/fdroiddata/-/raw/master/metadata/" + each_app + ".yml"
+        page = requests.get(version_url)
+        page_data = load(page.text, Loader)
+        version_app = page_data["CurrentVersionCode"]
+        app_url = "https://f-droid.org/repo/" + each_app + "_" + str(version_app) + ".apk"
+        apk_file = requests.get(app_url)
+        print("Downloading", each_app)
+        open(os.path.join(out_folder, each_app + ".apk"), 'wb').write(apk_file.content)
+        print("Downloaded", each_app)
 
     # TODO Download apps from URLs
 
 
 if __name__ == '__main__':
     main()
-
