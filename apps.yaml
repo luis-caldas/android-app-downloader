@@ -40,4 +40,4 @@ apps:
      - org.videolan.vlc
 
   url:
-     - com.zunjae.anyme: "https://anyme.app/apk"
+     com.zunjae.anyme: "https://github.com/zunjae/anyme_download/releases/download/DownloadLink/AnYme.apk"

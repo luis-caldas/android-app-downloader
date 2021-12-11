@@ -43,7 +43,7 @@ def main():
         break
         download_url = "https://apkpure.com/latest/%s/download" % each_app
         pprint("GPlay", "Downloading", each_app)
-        html_app_data = requests.get(download_url, headers={ "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36" })
+        html_app_data = requests.get(download_url)
         bs_app_data = BeautifulSoup(html_app_data.text, "lxml")
         print(bs_app_data)
         print(bs_app_data.find_all("a", id="download_link"))
@@ -60,11 +60,11 @@ def main():
         version_url = "https://gitlab.com/fdroid/fdroiddata/-/raw/master/metadata/%s.yml" % each_app
         pprint("FDroid", "Getting Version", each_app)
         page_data = load(requests.get(version_url).text, Loader)
-        pprint("GPlay", "Downloading", each_app)
+        pprint("FDroid", "Downloading", each_app)
         app_url = "https://f-droid.org/repo/%s_%s.apk" % (each_app, page_data["CurrentVersionCode"])
         apk_file = requests.get(app_url)
         open(os.path.join(out_folder, each_app + ".apk"), 'wb').write(apk_file.content)
-        pprint("GPlay", "Finished", each_app)
+        pprint("FDroid", "Finished", each_app)
 
     pprint("Info", "Finished", SEPARATOR, "FDroid", SEPARATOR)
     pprint("Info", "Initializing", SEPARATOR, "Direct", SEPARATOR)
