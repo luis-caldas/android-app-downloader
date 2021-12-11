@@ -1,0 +1,44 @@
+apps:
+
+  google-play:
+     - aib.ibank.android
+     - com.alibaba.aliexpresshd
+     - com.amazon.mShop.android.shopping
+     - com.discord
+     - com.kiwibrowser.browser
+     - com.revolut.revolut
+     - com.spotify.music
+     - com.whatsapp
+     - com.whicons.iconpack
+     - ie.leapcard.tnfc
+     - ie.three.my3
+
+  fdroid:
+     - app.organicmaps
+     - at.tomtasche.reader
+     - com.forrestguice.suntimeswidget
+     - com.gianlu.aria2app
+     - com.gitlab.mahc9kez.shadowsocks.foss
+     - com.gsnathan.pdfviewer
+     - com.ichi2.anki
+     - com.retroarch
+     - com.sagetech.mirror
+     - com.termux
+     - com.teslacoilsw.launcher
+     - com.thirtydegreesray.openhub
+     - com.trello
+     - com.tunerly
+     - de.markusfisch.android.binaryeye
+     - org.citra.citra_emu
+     - org.dolphinemu.dolphinemu
+     - org.floens.chan
+     - org.krita
+     - org.proninyaroslav.libretorrent
+     - org.quantumbadger.redreader
+     - org.schabi.newpipe
+     - org.videolan.vlc
+
+  url:
+     - com.aurora.store
+     - com.fsck.k9
+     - com.zunjae.anyme
