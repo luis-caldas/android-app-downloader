@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import os
+import sys
+import subprocess
 
 
 ###########
@@ -8,6 +10,7 @@ import os
 ###########
 
 CONFIG_FILENAME = "./apps.yaml"
+GAPI_CONFIG = "./gapi.conf"
 OUTPUT_FOLDER = "./output"
 
 
@@ -32,11 +35,13 @@ def main():
     if not os.path.isdir(out_folder):
         os.mkdir(out_folder)
 
-    # TODO Download apps from GPlay
+    # Download all apps from google play
+    config_file = os.path.join(script_folder, GAPI_CONFIG)
+    gplay_command = ["gplaycli", "-d", *config_full["apps"]["google-play"], "-y", "-f", out_folder, "-c", config_file]
+    subprocess.run(gplay_command, stdout=sys.stdout, stderr=sys.stderr, universal_newlines=True)
 
     # TODO Download apps from F-Droid
-    for each_app in config_full["apps"]["fdroid"]:
-        print(get_fdroid_url(each_app))
+    pass
 
     # TODO Download apps from URLs
 
