@@ -31,6 +31,7 @@ apps:
      - com.thirtydegreesray.openhub
      - com.tunerly
      - de.markusfisch.android.binaryeye
+     - fr.twentynine.keepon
      - org.dolphinemu.dolphinemu
      - org.floens.chan
      - org.krita
